@@ -18,10 +18,10 @@ player.
     .catch(function (err) {
         switch (err.name) {
             case "RangeError":
-                // the time was less than 0 or greater than video's length
+                console.log(`BŁĄD: vimeo-player próbuje wprowadzić czas: ${getVideoPlayerCurrentTime}.`)
                 break;
             default:
-                // some error
+                console.log("Nieznany błąd")
                 break;
         }
     });
