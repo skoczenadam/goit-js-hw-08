@@ -11,10 +11,11 @@ window.addEventListener("load", () => {
     messageValue.value = parseStorageKeeper ? parseStorageKeeper.message : "";
 });
 
-formElement.addEventListener("input", throttle(function() {
+formElement.addEventListener("input", throttle(function () {
+    const { email, message } = formElement.elements;
     const storageKeeper = {
-        email: formElement[0].value,
-        message: formElement[1].value
+        email: email.value,
+        message: message.value
     };
 
     localStorage.setItem("feedback-form-state", JSON.stringify(storageKeeper));
@@ -22,8 +23,7 @@ formElement.addEventListener("input", throttle(function() {
 
 formElement.addEventListener("submit", e => {
     e.preventDefault();
+    console.log(JSON.parse(localStorage.getItem("feedback-form-state")));
     localStorage.removeItem("feedback-form-state");
-    console.log(`Email: ${emailValue.value}`);
-    console.log(`Message: ${messageValue.value}`);
     formElement.reset();
 });
