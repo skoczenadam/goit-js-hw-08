@@ -1,0 +1,25 @@
+/* img {
+  pointer-events: none;
+} */
+
+.gallery {
+  display: flex;
+  gap: 24px;
+  list-style-type: none;
+  flex-wrap: wrap;
+}
+
+.gallery-item,
+.gallery-image {
+  width: 360px;
+  height: 200px;
+  cursor: pointer;
+}
+
+.gallery-image {
+  transition: 300ms;
+}
+
+.gallery-image:hover {
+  transform: scale(1.05);
+}
