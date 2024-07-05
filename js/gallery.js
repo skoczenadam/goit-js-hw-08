@@ -1,3 +1,5 @@
+document.addEventListener("click", e => e.preventDefault())
+
 const images = [
   {
     preview:
@@ -68,7 +70,7 @@ const gallery = document.querySelector(".gallery")
 
 const addPictures = images.map(element => {
   const image = `<li class="gallery-item">
-    <a class="gallery-link" href="#">
+    <a class="gallery-link" href="${element.original}">
       <img
         class="gallery-image"
         src="${element.preview}"
@@ -81,10 +83,10 @@ const addPictures = images.map(element => {
 });
 
 const openModal = e => {
-  if (e.target.nodeName !== "LI") {
+  if (e.target.nodeName !== "IMG") {
     return;
   }
-  const link = e.target.firstElementChild.href;
+  const link = e.target.getAttribute("data-source");
   console.log(link);
   const instance = basicLightbox.create(`
     <img src="${link}">`)
