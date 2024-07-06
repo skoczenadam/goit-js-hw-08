@@ -91,12 +91,14 @@ const openModal = e => {
   const instance = basicLightbox.create(`
     <img src="${link}">`)
   instance.show();
-  if (instance.visible()) {
-    document.addEventListener("keydown", e => {
+  const closeModal = e => {
     if (e.key === "Escape") {
       instance.close();
+      document.removeEventListener("keydown", closeModal);
     }
-  });
+  }
+  if (instance.visible()) {
+    document.addEventListener("keydown", closeModal);
   }
 }
 
